@@ -16,7 +16,7 @@ func getCard(ctx *gin.Context) {
 	if index, err := strconv.Atoi(cardID); err == nil {
 		ctx.JSON(http.StatusOK, &cards[index])
 	} else {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Wrong card ID"})
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Wrong card."})
 
 	}
 }
