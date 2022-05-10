@@ -6,14 +6,20 @@ import (
 )
 
 func main() {
+	//
+	// INITIALIZING GIN
+	// Set up a default server for Gin.
 	r := gin.Default()
 
-	// Returns the initialized sqlite database
+	// Returns an initialized sqlite database
 	db := controller.NewDb()
 
-	r.GET("/", db.GetCard)
+	//
+	// ROUTING - through Gin
+	//
+	r.GET("/", db.ReturnCards)
 	// r.GET("/:cardID", db.)
 	// r.POST("/api", db.add)
 
-	r.Run()
+	r.Run() //  Run the gin client
 }
