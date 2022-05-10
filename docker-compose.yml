@@ -1,0 +1,23 @@
+version: "3.4"
+
+services:
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./.env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  aced:
+    image: aced
+    container_name: acelib
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      - GIN_MODE=release
+      - MONGO_URI=mongodb+srv://admin:admin@acebase.rzqkl.mongodb.net/acebase?retryWrites=true&w=majority
