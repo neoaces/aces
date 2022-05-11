@@ -28,7 +28,7 @@ func NewDb() *UserDatabase {
 	return &UserDatabase{DB: db}
 }
 
-// GET "" - fetches a random user
+// GET "" - fetches a specific card
 func (db *UserDatabase) GetCard(ctx *gin.Context) {
 	cardID := ctx.Param("cardID")
 

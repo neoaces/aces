@@ -6,9 +6,7 @@ WORKDIR /go/src/app
 
 COPY . .
 
-RUN go get -u github.com/gin-gonic/gin
-RUN go get -u gorm.io/gorm
-RUN go get -u gorm.io/driver/sqlite
+RUN go mod download
 RUN go build -o /go/bin/app -v
 
 #final stage
@@ -19,4 +17,5 @@ COPY --from=builder /go/bin/app /app
 ENTRYPOINT /app
 
 LABEL Name=aced Version=0.0.1
-EXPOSE 8080
+
+EXPOSE 7979

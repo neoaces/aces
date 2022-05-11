@@ -1,14 +1,29 @@
 version: "3.4"
 
+# PORTS USED:
+# 5432 - postgres
+# 8080 - acelib (backend server)
+
 services:
-  postgres:
-    image: postgres
+  adminer:
+    image: adminer:latest
+    restart: always
     ports:
-      - "5432:5432"
-    env_file:
-      - ./.env
+      - 8080:8080
+    depends_on:
+      - psql
+
+  psql:
+    image: postgres
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=gorm
     volumes:
       - pgdata:/var/lib/postgresql/data
+    restart: always
+    ports:
+      - 5432:5432
 
   aced:
     image: aced
@@ -17,7 +32,14 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - 8080:8080
-    environment:
-      - GIN_MODE=release
-      - MONGO_URI=mongodb+srv://admin:admin@acebase.rzqkl.mongodb.net/acebase?retryWrites=true&w=majority
+      - 7979:7979
+    # environment:
+    #   - GIN_MODE=release
+    volumes:
+      - backendlog:/var/lib/bcknd/data
+    depends_on:
+      - psql
+
+volumes:
+  pgdata:
+  backendlog:
