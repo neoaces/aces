@@ -51,7 +51,7 @@ func (db *UserDatabase) ReturnCards(ctx *gin.Context) {
 		fmt.Printf("The card is %v, and the answer is %v\n", card.Name, card.Answer)
 	}
 
-	ctx.JSON(http.StatusAccepted, gin.H{"cards": found_cards})
+	ctx.JSON(http.StatusFound, gin.H{"cards": found_cards})
 }
 
 func (db *UserDatabase) AddCards(ctx *gin.Context) {

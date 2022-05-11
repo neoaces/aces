@@ -12,7 +12,7 @@ import (
 func InitDB() *gorm.DB {
 	// Initialize the database through the gorm sqlite driver.
 	// Open a connection through gorm
-	db, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("./test.db"), &gorm.Config{})
 	if err != nil {
 		panic("Something went wrong")
 	}

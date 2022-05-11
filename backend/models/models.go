@@ -4,6 +4,19 @@ package models
 
 import "gorm.io/gorm"
 
+type User struct {
+	gorm.Model
+	username string
+	cardsets []CardSet
+}
+
+type CardSet struct {
+	gorm.Model
+	name  string
+	class string
+	cards []Card `gorm:"foreignKey:Cardset"`
+}
+
 type Card struct {
 	gorm.Model
 	Name   string

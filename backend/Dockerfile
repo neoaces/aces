@@ -1,6 +1,6 @@
 #build stage
 FROM golang:1.17.9-alpine AS builder
-RUN apk add --no-cache git
+RUN apk add --no-cache git build-base
 
 WORKDIR /go/src/app
 
