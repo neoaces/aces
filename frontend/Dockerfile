@@ -24,4 +24,4 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY --from=builder /vue-ui/dist /usr/share/nginx/html
 
 EXPOSE 7256
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"] 

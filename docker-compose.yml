@@ -41,10 +41,10 @@ services:
       - backendlog:/var/lib/bcknd/data
     depends_on:
       - psql
-  
+
   acef:
-    depends_on:
-      - aced
+    # depends_on:
+    #   - aced
     container_name: acef
     build:
       context: ./frontend
