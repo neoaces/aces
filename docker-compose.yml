@@ -2,7 +2,8 @@ version: "3.4"
 
 # PORTS USED:
 # 5432 - postgres
-# 8080 - acelib (backend server)
+# 8080 - adminer for postgres
+# 8000 - acelib (backend server)
 
 services:
   adminer:
@@ -32,8 +33,9 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - 7979:7979
-    # environment:
+      - 8000:8000
+    environment:
+      - PORT=8000
     #   - GIN_MODE=release
     volumes:
       - backendlog:/var/lib/bcknd/data

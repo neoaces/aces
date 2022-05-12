@@ -12,13 +12,13 @@ func main() {
 	r := gin.Default()
 
 	// Returns an initialized sqlite database
-	db := controller.NewDb()
+	controller.NewDb()
 
 	//
 	// ROUTING - through Gin
 	//
-	r.GET("/", db.ReturnCards)
-	// r.GET("/:cardID", db.)
+	r.GET("/", controller.GetRandCard)
+	r.GET("/:ID", controller.GetCard)
 	// r.POST("/api", db.add)
 
 	r.Run() //  Run the gin client
