@@ -41,6 +41,16 @@ services:
       - backendlog:/var/lib/bcknd/data
     depends_on:
       - psql
+  
+  acef:
+    depends_on:
+      - aced
+    container_name: acef
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 7256:7256
 
 volumes:
   pgdata:
