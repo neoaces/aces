@@ -6,15 +6,15 @@ import axios from "axios";
 // 	msg: String,
 // });
 
-const data = reactive({ value: null });
+// const data = reactive({ value: null });
 
-axios.get("http://aced:8000/").then((res) => {
-	data.value = JSON.stringify(res.data, null, 2);
-	console.log(data.value);
-});
+// axios.get("https://random-data-api.com/").then((res) => {
+// 	data.value = JSON.stringify(res.data, null, 2);
+// 	console.log(data.value);
+// });
 // .then((json) => (data.value = json));
 
-console.log(data.value);
+// console.log(data.value);
 
 const state = reactive({ count: 0 });
 
@@ -25,9 +25,9 @@ const increment = () => {
 
 <template>
 	<div class="text-center">
-		<h1 class="text-blue-900 pt-6 text-2xl">{{ msg }}</h1>
+		<!-- <h1 class="text-blue-900 pt-6 text-2xl">{{ msg }}</h1> -->
 		<p>count = {{ state.count }}</p>
-		<pre>{{ data.value }}</pre>
+		<!-- <pre>{{ data.value }}</pre> -->
 		<button @click="increment" class="bg-slate-200">This will increment.</button>
 		<HelloWorld />
 	</div>
